@@ -1,0 +1,11 @@
+beautifulsoup4==4.4.1
+bs4==0.0.1
+get==0.0.11
+numpy==1.11.1
+post==0.0.8
+public==0.0.34
+query-string==0.0.8
+request==0.0.8
+requests==2.10.0
+snakemake==3.7.1
+urllib3==1.16
