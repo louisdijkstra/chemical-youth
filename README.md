@@ -18,6 +18,18 @@ You can now easily install all requirements by typing
 
     $ pip install -r requirements.txt
 
+## Directory structure 
+
+The repository consists of the following directories/files: 
+
+* `bin/` - contains the various Python scripts.
+
+* `data/` - contains the raw data files. 
+
+* `results/` - contains the results/plots
+
+* `Snakefile` - the data processing pipeline
+
 ## Contact
 
 Louis Dijkstra
