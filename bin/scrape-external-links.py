@@ -53,8 +53,13 @@ def main():
 
 	outputfilename = args[1] 
 
-	print(names)
-	print(links)
+	if options.verbose: # prints the list of pages to be scraped
+		print("\nList of pages to be scraped:\n")
+		print("title\t\tlink")
+		print("-----\t\t----")
+		for name, link in zip(names, links): 
+			print("%s\t\t%s"%(name, link))
+		print("-----\t\t----\n\n")
 
 	i       = 0
 	n_links = len(links)

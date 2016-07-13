@@ -14,7 +14,7 @@ import shutil
 """
 
 
-def readInDataFromURL(site): 
+def readInDataFromURL(site, headers=None): 
 	"""
 		Reads in the html data from a given site
 
@@ -25,7 +25,10 @@ def readInDataFromURL(site):
 			text
 	"""
 	http    = urllib3.PoolManager()
-	request = http.request('GET', site)  # get the data
+	if headers != None: 
+		request = http.request('GET', site, headers=headers)
+	else: 
+		request = http.request('GET', site)
 	soup    = BeautifulSoup(request.data)
 	return soup.get_text()
 
