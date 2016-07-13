@@ -17,6 +17,13 @@ ___author___ = "Louis Dijkstra"
 """
 
 
+rule get_users: 
+	input:   'data/users-designer-drugs.tsv'
+	output:  'data/unique-identified-users-designer-drugs.tsv'
+	message: 'Creating a list of all unique users; no bots and no IP addresses. Output is stored at {output}.'
+	shell:   'python bin/get-unique-users.py --no-bots --no-anonymized {input} > {output}'
+
+
 rule classify_users: 
 	input:   'data/users-designer-drugs.tsv'
 	output:  'data/unique-users-designer-drugs.tsv'
