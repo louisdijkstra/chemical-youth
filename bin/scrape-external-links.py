@@ -3,16 +3,11 @@ from __future__ import print_function, division
 from optparse import OptionParser
 import os
 import sys
-import numpy as np
-import urllib3
-import time
-import json
-from bs4 import BeautifulSoup
-import requests
-import shutil
 
 # add the python directory
 sys.path.insert(0, os.path.abspath(os.path.dirname(__file__))[:-3] + 'python')
+
+from WikipediaScraper import *
 
 __author__ = "Louis Dijkstra"
 
@@ -26,37 +21,12 @@ usage = """%prog <title> <output.csv>
 Scraps the external links of all Wikipedia pages in the 
 <link-list.txt> file. The output is stored in CSV format 
 (tab-delimited). It contains the following columns: 
+
+	page_id       - id of the Wikipedia page
+	name          - title of the page
+	external_link - an external link on this page
+
 """
-
-API_LINE = "https://en.wikipedia.org/w/api.php?action=query&prop=extlinks&format=json&ellimit=5000&titles="
-
-def get_links(linkfile): 
-	"""
-		Gets the links in the given file. Returns all the links
-		in a list. 
-	"""
-	names, links = [], [] 
-
-	for line in linkfile: 
-		names.append( line.strip() )
-		links.append( API_LINE + line.strip() )
-
-	return names, links
-
-def readInDataFromURL(site): 
-	"""
-		Reads in the html data from a given site
-
-		Args: 
-			site - site location (string)
-
-		Returns:
-			text
-	"""
-	http    = urllib3.PoolManager()
-	request = http.request('GET', site)  # get the data
-	soup    = BeautifulSoup(request.data)
-	return soup.get_text()
 
 def printHeader(file): 
 	print("page_id\tname\texternal_link", file=file)
@@ -77,9 +47,9 @@ def main():
 
 	try: 
 		linkfile = open(args[0], 'r')
-		names, links = get_links(linkfile)
+		names, links = get_links(linkfile, api_command = "https://en.wikipedia.org/w/api.php?action=query&prop=extlinks&format=json&ellimit=5000&titles=")
 	except: 
-		names, links = [args[0]], [API_LINE + args[0]]
+		names, links = [args[0]], ["https://en.wikipedia.org/w/api.php?action=query&prop=extlinks&format=json&ellimit=5000&titles=" + args[0]]
 
 	outputfilename = args[1] 
 
