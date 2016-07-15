@@ -18,10 +18,15 @@ a <- cy %>%
     n_edits = sum(n_edits)
   ) 
 
-a %>% arrange(desc(n_users))
+a <- a %>% arrange(desc(n_users))
 
 # export the new table to file
 write.table(a, file='~/projects/chemical-youth/data/top-articles-designer-drugs.tsv', row.names = FALSE, quote=FALSE, sep='\t')
+
+# export the top n articles that were edited by the users that contributed to the
+# designer drugs pages as well
+n = 50
+write.table(head(a, n), file='~/projects/chemical-youth/data/top-articles.tsv', row.names = FALSE, quote=FALSE, sep='\t')
 
 ggplot(data = a) + 
   geom_histogram(aes(x = n_users), binwidth = 1)

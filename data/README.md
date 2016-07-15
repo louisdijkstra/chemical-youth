@@ -87,6 +87,11 @@ A tab-delimited CSV file containing the articles that were edited by users that 
 
 This file is generated using the R-script `R/chemical-youth.R` and based on the `data/top-edits-users-designer-drugs.tsv`.
 
+`top-articles-designer.drugs.tsv`
+---------------------------------
+
+Top 50 of the articles edited by most users from `top-articles-designer.drugs.tsv`. This file is generated using the R-script `R/chemical-youth.R` and based on the `data/top-edits-users-designer-drugs.tsv`.
+
 `top-edits-users-designer-drugs.tsv`
 ------------------------------------
 
