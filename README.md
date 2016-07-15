@@ -18,17 +18,23 @@ You can now easily install all requirements by typing
 
     $ pip install -r requirements.txt
 
+Make sure that whenever you start working with the scripts in this repository to source the environment: 
+
+    $ source chemicalyouth/bin/activate
+
 ## Directory structure 
 
 The repository consists of the following directories/files: 
 
 * `bin/` - contains the various Python scripts.
 
-* `data/` - contains the raw data files. 
+* `data/` - contains the raw data files. See the `README.md` for a more elaborate description of each file. 
 
-* `results/` - contains the results/plots
+* `python/` - contains some functions used by several scripts in `bin/`.
 
-* `Snakefile` - the data processing pipeline
+* `R/` - some R-scripts. 
+
+* `Snakefile` - the data processing pipeline (contains some of the more frequently used commands)
 
 ## Contact
 
